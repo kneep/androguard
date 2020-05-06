@@ -130,6 +130,30 @@ def doScan( method ):
         import traceback
         print 'generic exception: ' + traceback.format_exc()
 
+# scan files
+def doScan1( method ):
+    url = api_url + method[0]
+    files = {'file': open(method[1], 'rb')}
+    headers = {"apikey": api_key}
+    try:
+        response = requests.post( url, files=files, data=headers )
+        xjson = response.json()
+        response_code = xjson ['response_code']
+        verbose_msg = xjson ['verbose_msg']
+        if response_code == 1:
+            print verbose_msg
+            return xjson
+        else:
+            print verbose_msg
+
+    except urllib2.HTTPError, e:
+        handleHTTPErros(e.code)
+    except urllib2.URLError, e:
+        print 'URLError: ' + str(e.reason)
+    except Exception:
+        import traceback
+        print 'generic exception: ' + traceback.format_exc()
+
 # get report, comment and rescan
 def doElse( method ):
     url = api_url + method[0]
