@@ -96,6 +96,63 @@ default_conf = {
 }
 
 
+default_conf1 = {
+    ## Configuration for executables used by androguard
+    # Assume the binary is in $PATH, otherwise give full path
+    "BIN_JADX": "jadx",
+    # Dex2jar binary
+    "BIN_DEX2JAR": "dex2jar.sh",
+
+    # TODO Use apksigner instead
+    "BIN_JARSIGNER": "jarsigner",  # TO BE REMOVED
+
+    "BIN_DED": "ded.sh",  # TO BE REMOVED
+    "BIN_JAD": "jad",  # TO BE REMOVED
+    "BIN_WINEJAD": "jad.exe",  # TO BE REMOVED
+    "BIN_FERNFLOWER": "fernflower.jar",  # TO BE REMOVED
+    "OPTIONS_FERNFLOWER": {"dgs": '1',  # TO BE REMOVED
+                           "asc": '1'},
+
+    # Runtime variables
+    #
+    # A path to the temporary directory
+    "TMP_DIRECTORY": tempfile.gettempdir(),
+
+    # Function to print stuff
+    "PRINT_FCT": sys.stdout.write,
+
+    # Default API level, if requested API is not available
+    "DEFAULT_API": 16,  # this is the minimal API version we have
+
+    # Session, for persistence
+    "SESSION": None,
+
+    # Color output configuration
+    "COLORS": {
+        "OFFSET": Fore.YELLOW,
+        "OFFSET_ADDR": Fore.GREEN,
+        "INSTRUCTION_NAME": Fore.YELLOW,
+        "BRANCH_FALSE": Fore.RED,
+        "BRANCH_TRUE": Fore.GREEN,
+        "BRANCH": Fore.BLUE,
+        "EXCEPTION": Fore.CYAN,
+        "BB": Fore.MAGENTA,
+        "NOTE": Fore.RED,
+        "NORMAL": Fore.RESET,
+        "OUTPUT": {
+            "normal": Fore.RESET,
+            "registers": Fore.YELLOW,
+            "literal": Fore.GREEN,
+            "offset": Fore.MAGENTA,
+            "raw": Fore.RED,
+            "string": Fore.RED,
+            "meth": Fore.CYAN,
+            "type": Fore.BLUE,
+            "field": Fore.GREEN,
+        },
+    },
+}
+
 class Configuration:
     instance = None
 
