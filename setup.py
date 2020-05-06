@@ -21,6 +21,11 @@ else:
     magic_package = 'python-magic>=0.4.15'
 
 
+if sys.platform in ('darwin', 'win32'):
+    magic_package = 'python-magic-bin>=0.4.14'
+else:
+    magic_package = 'python-magic>=0.4.15'
+
 # TODO add the permission mapping generation at a better place!
 # from axplorer_to_androguard import generate_mappings
 # generate_mappings()
